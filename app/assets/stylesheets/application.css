@@ -13,9 +13,3 @@
  *= require_tree .
  *= require_self
  */
-.header-bg {
-  width:100%;
-  height:475px;
-  background-image: url("1.jpg");
-  background-size:cover;
-}
