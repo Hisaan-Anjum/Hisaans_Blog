@@ -1,0 +1,20 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+h58
+{
+	font-family: 'Bad Script', cursive;
+}
+.jumbotron-ssg
+{
+	background-image: url('BME1.jpg');
+	background-position: center;
+}
+.jumbotron-ssf
+{
+	background-image: url('com.jpg');
+	background-position: center;
+}
