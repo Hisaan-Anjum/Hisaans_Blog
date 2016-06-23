@@ -10,17 +10,15 @@ h58
 }
 .jumbotron-ssg
 {
-	background-image: asset-url(asset-path('BME1.jpg');
+	background-image: asset-url('BME1.jpg');
 	background-position: center;
 }
 .jumbotron-ssf
 {
-	background-image: url(asset-path('com.jpg');
+	background-image: url('com.jpg');
 	background-position: center;
 }
-.header-bg {
-  width:100%;
-  height:475px;
-  background-image: url(asset-path("1.jpg");
-  background-size:cover;
+.header-bg
+{
+	width:100%;height:475px;background-image: url('1.jpg');background-size:cover;
 }
