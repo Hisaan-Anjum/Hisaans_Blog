@@ -8,6 +8,7 @@ Rails.application.routes.draw do
    end
  end
    root "pages#home"
+   get "googlev" => "pages#googlev"
 mount Commontator::Engine => '/commontator'
 
   # The priority is based upon order of creation: first created -> highest priority.
