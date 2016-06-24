@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  resources :blog_posts
   devise_for :users
+ 
   root "pages#home"
 
   # The priority is based upon order of creation: first created -> highest priority.
