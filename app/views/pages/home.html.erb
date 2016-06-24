@@ -17,7 +17,7 @@
 <p>
 <% if user_signed_in? %>
 
-<%= link_to 'See Blog Posts' ,"#" , class:"btn btn-primary btn-lg" %>
+<%= link_to 'See Blog Posts' ,blog_posts_path , class:"btn btn-primary btn-lg" %>
 <%= link_to "Logout" , destroy_user_session_path ,:method => :delete , class:"btn btn-default btn-lg", style:"background-color:transparent;color:white;" %>
 
 <% else %>

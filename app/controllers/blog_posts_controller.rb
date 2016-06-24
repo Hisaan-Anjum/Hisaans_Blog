@@ -1,5 +1,7 @@
 class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
+    before_action :uc, only: [:edit, :update, :destroy]
+
 
   # GET /blog_posts
   # GET /blog_posts.json
@@ -14,8 +16,22 @@ class BlogPostsController < ApplicationController
 
   # GET /blog_posts/new
   def new
-    @blog_post = BlogPost.new
+    @blog_post = current_user.blog_posts.build
+  
   end
+
+
+  def upvote
+  @blog_post = BlogPost.find(params[:id])
+  @blog_post.upvote_by current_user
+  redirect_to blog_post_path
+end
+
+def downvote
+  @blog_post = BlogPost.find(params[:id])
+  @blog_post.downvote_by current_user
+  redirect_to blog_post_path
+end
 
   # GET /blog_posts/1/edit
   def edit
@@ -24,7 +40,8 @@ class BlogPostsController < ApplicationController
   # POST /blog_posts
   # POST /blog_posts.json
   def create
-    @blog_post = BlogPost.new(blog_post_params)
+
+    @blog_post = current_user.blog_posts.build(blog_post_params)
 
     respond_to do |format|
       if @blog_post.save
@@ -35,6 +52,8 @@ class BlogPostsController < ApplicationController
         format.json { render json: @blog_post.errors, status: :unprocessable_entity }
       end
     end
+    
+
   end
 
   # PATCH/PUT /blog_posts/1
@@ -60,6 +79,15 @@ class BlogPostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+
+
+     def uc
+      @blog_post = BlogPost.find(params[:id])
+      redirect_to posts_path,notice:"This is another Hisaan's post you are not allowed to edit it ."  if @blog_post.nil?
+    end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,6 +97,6 @@ class BlogPostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_post_params
-      params.require(:blog_post).permit(:post)
+      params.require(:blog_post).permit(:post, :title)
     end
 end

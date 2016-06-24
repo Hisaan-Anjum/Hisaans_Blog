@@ -1,5 +1,10 @@
+<% if current_user.email == "hisaananjum@outlook.com"%>
+
 <h1>New Blog Post</h1>
 
 <%= render 'form' %>
+<% else %>
+<h1 style="font-size:50px">You are not authorized to make posts on this website .</h1>
+<% end %>
 
-<%= link_to 'Back', blog_posts_path %>
+<%= link_to 'Back', blog_posts_path , class:"btn btn-primary btn-lg"%>

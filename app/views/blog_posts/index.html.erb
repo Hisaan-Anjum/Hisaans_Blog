@@ -1,27 +1,43 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+<div class="container">
 
-<h1>Listing Blog Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Post</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<% if current_user.email == "hisaananjum@outlook.com"%>
+<%= link_to 'New Blog post', new_blog_post_path , class:"btn btn-primary btn-md"%>
+<% end %>
+<br> </br>
     <% @blog_posts.each do |blog_post| %>
-      <tr>
-        <td><%= blog_post.post %></td>
-        <td><%= link_to 'Show', blog_post %></td>
-        <td><%= link_to 'Edit', edit_blog_post_path(blog_post) %></td>
-        <td><%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <%= link_to blog_post do%>
+    <div class="panel panel-default">
+        <div class="panel panel-body">
+        <% if false%>
 
-<br>
 
-<%= link_to 'New Blog post', new_blog_post_path %>
+         <%= blog_post.post %>
+         <% end %>
+<div class="text-center">
+                  <h3><%= blog_post.title %></h3>
+                  <p>(Click post to view comments)</p>
+</div>
+           <% end %>
+           </div>
+        <div class="panel panel-footer">
+    <b><p><%= blog_post.user.email %></p></b>
+     <% if current_user.email == "hisaananjum@outlook.com"%>
+
+     <%= link_to 'Edit', edit_blog_post_path(blog_post) %>
+     <%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %>
+     <% end %>
+<%= link_to  dislike_blog_post_path(blog_post), method: :put, class:"btn btn-primary" do  %>
+               Dislike <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"> </span> <span class="badge"> <%= blog_post.get_downvotes.size %></span>
+
+        <% end %> 
+                <%= link_to  like_blog_post_path(blog_post), method: :put, class:"btn btn-primary" do  %>
+               Like <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span> <span class="badge"> <%= blog_post.get_upvotes.size %></span>
+
+        <% end %>
+     <% end %>
+      </div>
+
+</div>
+</div>

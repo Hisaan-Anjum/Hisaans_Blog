@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
   resources :blog_posts
   devise_for :users
- 
-  root "pages#home"
+  resources :blog_posts do
+  member do
+    put "like", to: "blog_posts#upvote"
+    put "dislike", to: "blog_posts#downvote"
+   end
+ end
+   root "pages#home"
+mount Commontator::Engine => '/commontator'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

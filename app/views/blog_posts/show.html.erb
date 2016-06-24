@@ -1,9 +1,43 @@
+
+<link href='https://fonts.googleapis.com/css?family=Homemade+Apple' rel='stylesheet' type='text/css'>
 <p id="notice"><%= notice %></p>
+<div class="container">
+<div class="panel panel-default">
+<div class="panel-header">
+<div class="text-center">
 
-<p>
-  <strong>Post:</strong>
-  <%= @blog_post.post %>
-</p>
+<h1 style="font-size:40px"><%= @blog_post.title %></h1>
+</div>
+</div>
+<div class="panel-body">
 
-<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
-<%= link_to 'Back', blog_posts_path %>
+  <h80 style="font-size:20px"><%= @blog_post.post %></h80>
+</div>
+<div class="panel-footer">
+
+<b><p><%= @blog_post.user.email %></p></b>
+
+     <% if current_user.email == "hisaananjum@outlook.com"%>
+
+     <%= link_to 'Edit', edit_blog_post_path(@blog_post) %>
+     <%= link_to 'Destroy', @blog_post, method: :delete, data: { confirm: 'Are you sure?' } %>
+     <% end %>
+     <br> </br>
+     <p>
+          <%= link_to 'Back', blog_posts_path , class:"btn btn-primary btn-md" %>
+          <%= link_to  dislike_blog_post_path(@blog_post), method: :put, class:"btn btn-primary" do  %>
+               Dislike <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"> </span> <span class="badge"> <%= @blog_post.get_downvotes.size %></span>
+
+        <% end %> 
+                <%= link_to  like_blog_post_path(@blog_post), method: :put, class:"btn btn-primary" do  %>
+               Like <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span> <span class="badge"> <%= @blog_post.get_upvotes.size %></span>
+
+        <% end %>
+        </p>
+
+<%= commontator_thread(@blog_post) %>
+
+     </div>
+
+</div>
+</div>
