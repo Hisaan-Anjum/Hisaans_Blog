@@ -36,11 +36,12 @@
                Like <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span> <span class="badge"> <%= blog_post.get_upvotes.size %></span>
 
         <% end %>
-     <% end %>
       </div>
+      </div>
+           <% end %>
 
-</div>
-</div>
 <div class="center">
 <%= will_paginate @blog_posts, renderer: BootstrapPagination::Rails %>
+</div>
+</div>
 </div>
