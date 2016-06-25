@@ -2,6 +2,9 @@
 
 <div class='header-bg'>
 <%= render 'pages/header2'%>
+<% flash.each do |name,msg| %>
+  <%= content_tag(:div, msg, class:"alert alert-info")%>
+  <% end %>
 <br> </br>
 <br> </br>
 
