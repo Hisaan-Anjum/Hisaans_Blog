@@ -6,7 +6,7 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts
   # GET /blog_posts.json
   def index
-    @blog_posts = BlogPost.all
+    @blog_posts = BlogPost.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /blog_posts/1
