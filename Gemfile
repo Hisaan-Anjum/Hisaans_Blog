@@ -28,6 +28,7 @@ gem 'devise'
 gem 'commontator'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
